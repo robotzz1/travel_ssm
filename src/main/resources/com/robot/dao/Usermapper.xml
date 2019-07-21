@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.Usermapper">
+    <select id="findByUsername" parameterType="String" resultType="user">
+        select * from tab_user where username = #{username}
+    </select>
+
+    <insert id="saveUser" parameterType="user" >
+        insert into tab_user(username,password,name,birthday,sex,telephone,email,status,code)
+        values(#{username},#{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
+    </insert>
+
+    <!--根据激活码查询用户对象-->
+    
+    <select id="findByCode" parameterType="String" resultType="user">
+        select * from tab_user where code = #{code}
+    </select>
+
+    <!--修改指定用户激活状态-->
+
+    <update id="updateStatus" parameterType="user" >
+        update tab_user set status = 'Y' where uid=#{uid}
+    </update>
+
+    <!--根据用户名和密码查询的方法-->
+
+    <select id="findByUsernameAndPassword"  resultType="user">
+        select * from tab_user where username =#{username} and password = #{password}
+    </select>
+</mapper>

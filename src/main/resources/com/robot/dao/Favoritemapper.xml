@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.Favoritemapper">
+
+    <select id="findByRidAndUid" resultType="favorite" parameterType="favoriteId">
+        select * from tab_favorite where rid=#{rid} and uid =#{uid}
+    </select>
+
+    <select id="findCountByRid" parameterType="Integer" resultType="Integer">
+        select count(*) from tab_favorite where rid=#{rid}
+    </select>
+
+    <insert id="add" parameterType="favoriteId" >
+        insert into tab_favorite () values(#{rid},now(),#{uid})
+    </insert>
+</mapper>
